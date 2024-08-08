@@ -1,5 +1,9 @@
 *~
 *.pyc
 bin
-build
 lib
+
+# 临时文件
+build/
+install/
+log/

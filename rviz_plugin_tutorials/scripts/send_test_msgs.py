@@ -64,6 +64,8 @@ radius = 5
 angle = 0
 dist = 3
 
+msg_id = 0
+
 while rclpy.ok():
     imu = Imu()
     imu.header.frame_id = '/base_link'
@@ -85,6 +87,9 @@ while rclpy.ok():
     tf.transform.translation.z = 0.0
     tf.transform.rotation = quaternion_from_euler(0, 0, angle)
     br.sendTransform(tf)
+
+    print(f'publish IMU msg_id: {msg_id} (angle={angle}, radius={radius}, dist={dist})')
+    msg_id += 1
 
     angle += .01
     rate.sleep()
